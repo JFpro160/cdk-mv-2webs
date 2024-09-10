@@ -15,7 +15,7 @@ class Pila_Ec2(Stack):
 
         ec2_nombre = CfnParameter(self, "ec2_nombre", type="String", default="MV Default",
                                      description="Nombre de la instancia")
-        ami_id = CfnParameter(self, "ami_id", type="String", default="ami-0aa28dab1f2852040",
+        ami = CfnParameter(self, "ami", type="String", default="ami-0aa28dab1f2852040",
                               description="Ubuntu Server 22.04 LTS")
 
         rol = iam.Role.from_role_arn(self, "rol", role_arn="arn:aws:iam::670006807599:role/LabRole")
@@ -45,7 +45,7 @@ class Pila_Ec2(Stack):
         ec2_instancia = ec2.Instance(
             self, "ec2_intancia",
             instance_type=ec2.InstanceType("t2.micro"),
-            machine_image=ec2.MachineImage.generic_linux({ "us-east-1": ami_id.value_as_string }),
+            machine_image=ec2.MachineImage.generic_linux({ "us-east-1": ami.value_as_string }),
             vpc=nube,
             security_group=grupo_seguridad,
             key_name="vockey",
