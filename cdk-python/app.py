@@ -2,7 +2,7 @@
 
 import boto3
 from aws_cdk import App, Environment
-from cdk_python.cdk_python_stack import Pila_Ec2
+from cdk_python.cdk_python_stack import PilaEc2
 
 # Obtener automáticamente el Account ID y la región
 session = boto3.session.Session()
