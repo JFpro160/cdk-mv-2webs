@@ -7,13 +7,12 @@ from aws_cdk import (
 )
 from constructs import Construct
 
-class Pila_Ec2(Stack):
+class PilaEc2(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
         # Parámetros
-
-        ec2_nombre = CfnParameter(self, "ec2_nombre", type="String", default="MV Default",
+        ec2Nombre = CfnParameter(self, "ec2-nombre", type="String", default="MV Default",
                                      description="Nombre de la instancia")
         ami = CfnParameter(self, "ami", type="String", default="ami-0aa28dab1f2852040",
                               description="Ubuntu Server 22.04 LTS")
@@ -22,32 +21,32 @@ class Pila_Ec2(Stack):
 
         nube = ec2.Vpc.from_lookup(self, "vpc", is_default=True)
 
-        grupo_seguridad = ec2.SecurityGroup(
-            self, "grupo_seguridad_ec2",
+        grupoSeguridad = ec2.SecurityGroup(
+            self, "grupo-seguridad-ec2",
             vpc=nube,
             description="Se permite el trafico SSH y HTTP desde 0.0.0.0/0",
             allow_all_outbound=True
         )
 
-        grupo_seguridad.add_ingress_rule(
+        grupoSeguridad.add_ingress_rule(
             ec2.Peer.any_ipv4(),
             ec2.Port.tcp(22),
             "Permitir SSH"
         )
 
-        grupo_seguridad.add_ingress_rule(
+        grupoSeguridad.add_ingress_rule(
             ec2.Peer.any_ipv4(),
             ec2.Port.tcp(80),
             "Permitir HTTP"
         )
 
         # Instancia EC2 con 'LabRole'
-        ec2_instancia = ec2.Instance(
-            self, "ec2_intancia",
+        ec2Instancia = ec2.Instance(
+            self, "ec2-instancia",
             instance_type=ec2.InstanceType("t2.micro"),
             machine_image=ec2.MachineImage.generic_linux({ "us-east-1": ami.value_as_string }),
             vpc=nube,
-            security_group=grupo_seguridad,
+            security_group=grupoSeguridad,
             key_name="vockey",
             role=rol,  # Usar 'LabRole'
             block_devices=[ec2.BlockDevice(
@@ -64,11 +63,11 @@ class Pila_Ec2(Stack):
         )
 
         # Cambiando el nombre a la MV
-        ec2_instancia.instance.tags.set_tag('Name', f'{ec2_nombre.value_as_string}')
+        ec2Instancia.instance.tags.set_tag('Name', f'{ec2Nombre.value_as_string}')
 
         # Salidas
-        CfnOutput(self, "ID", value=ec2_instancia.instance_id)
-        CfnOutput(self, "IP Publica", value=ec2_instancia.instance_public_ip)
-        CfnOutput(self, "websimpleURL", value=f"http://{ec2_instancia.instance_public_ip}/websimple")
-        CfnOutput(self, "webplantillaURL", value=f"http://{ec2_instancia.instance_public_ip}/webplantilla")
+        CfnOutput(self, "ID", value=ec2Instancia.instance_id)
+        CfnOutput(self, "IP Publica", value=ec2Instancia.instance_public_ip)
+        CfnOutput(self, "websimpleURL", value=f"http://{ec2Instancia.instance_public_ip}/websimple")
+        CfnOutput(self, "webplantillaURL", value=f"http://{ec2Instancia.instance_public_ip}/webplantilla")
 

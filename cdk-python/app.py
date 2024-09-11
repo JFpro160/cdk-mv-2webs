@@ -15,7 +15,7 @@ app = App()
 env = Environment(account=account_id, region=region)
 
 # Crear el stack y pasar el rol labrole como CloudFormation execution role
-Pila_Ec2(app, "Pila_Ec2", env=env)
+PilaEc2(app, "PilaEc2", env=env)
 
 app.synth()
 
