@@ -47,7 +47,7 @@ class PilaEc2(Stack):
             machine_image=ec2.MachineImage.generic_linux({ "us-east-1": ami.value_as_string }),
             vpc=nube,
             security_group=grupoSeguridad,
-            key_pair="vockey",
+            key_pair=ec2.KeyPair.from_key_pair_name(self, "keyPair", "vockey"),
             role=rol,  # Usar 'LabRole'
             block_devices=[ec2.BlockDevice(
                 device_name="/dev/sda1",
