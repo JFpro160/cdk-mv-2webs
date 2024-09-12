@@ -1,0 +1,141 @@
+Description: This stack includes resources needed to deploy AWS CDK apps into this environment
+Parameters:
+  TrustedAccounts:
+    Description: List of AWS accounts that are trusted to publish assets and deploy stacks to this environment
+    Default: ""
+    Type: CommaDelimitedList
+  TrustedAccountsForLookup:
+    Description: List of AWS accounts that are trusted to look up values in this environment
+    Default: ""
+    Type: CommaDelimitedList
+  CloudFormationExecutionPolicies:
+    Description: List of the ManagedPolicy ARN(s) to attach to the CloudFormation deployment role
+    Default: ""
+    Type: CommaDelimitedList
+  FileAssetsBucketName:
+    Description: The name of the S3 bucket used for file assets
+    Default: ""
+    Type: String
+  FileAssetsBucketKmsKeyId:
+    Description: Empty to create a new key (default), 'AWS_MANAGED_KEY' to use a managed S3 key, or the ID/ARN of an existing key.
+    Default: ""
+    Type: String
+  ContainerAssetsRepositoryName:
+    Description: A user-provided custom name to use for the container assets ECR repository
+    Default: ""
+    Type: String
+  Qualifier:
+    Description: An identifier to distinguish multiple bootstrap stacks in the same environment
+    Default: hnb659fds
+    Type: String
+    AllowedPattern: "[A-Za-z0-9_-]{1,10}"
+    ConstraintDescription: Qualifier must be an alphanumeric identifier of at most 10 characters
+  PublicAccessBlockConfiguration:
+    Description: Whether or not to enable S3 Staging Bucket Public Access Block Configuration
+    Default: "true"
+    Type: String
+    AllowedValues:
+      - "true"
+      - "false"
+  InputPermissionsBoundary:
+    Description: Whether or not to use either the CDK supplied or custom permissions boundary
+    Default: ""
+    Type: String
+  UseExamplePermissionsBoundary:
+    Default: "false"
+    AllowedValues:
+      - "true"
+      - "false"
+    Type: String
+  BootstrapVariant:
+    Type: String
+    Default: "AWS CDK: Default Resources"
+    Description: Describe the provenance of the resources in this bootstrap stack. Change this when you customize the template. To prevent accidents, the CDK CLI will not overwrite bootstrap stacks with a different variant.
+
+Conditions:
+  HasTrustedAccounts:
+    Fn::Not:
+      - Fn::Equals:
+          - ""
+          - Fn::Join:
+              - ""
+              - Ref: TrustedAccounts
+  HasTrustedAccountsForLookup:
+    Fn::Not:
+      - Fn::Equals:
+          - ""
+          - Fn::Join:
+              - ""
+              - Ref: TrustedAccountsForLookup
+  HasCloudFormationExecutionPolicies:
+    Fn::Not:
+      - Fn::Equals:
+          - ""
+          - Fn::Join:
+              - ""
+              - Ref: CloudFormationExecutionPolicies
+  HasCustomFileAssetsBucketName:
+    Fn::Not:
+      - Fn::Equals:
+          - ""
+          - Ref: FileAssetsBucketName
+  CreateNewKey:
+    Fn::Equals:
+      - ""
+      - Ref: FileAssetsBucketKmsKeyId
+  UseAwsManagedKey:
+    Fn::Equals:
+      - AWS_MANAGED_KEY
+      - Ref: FileAssetsBucketKmsKeyId
+  ShouldCreatePermissionsBoundary:
+    Fn::Equals:
+      - "true"
+      - Ref: UseExamplePermissionsBoundary
+  PermissionsBoundarySet:
+    Fn::Not:
+      - Fn::Equals:
+          - ""
+          - Ref: InputPermissionsBoundary
+  HasCustomContainerAssetsRepositoryName:
+    Fn::Not:
+      - Fn::Equals:
+          - ""
+          - Ref: ContainerAssetsRepositoryName
+  UsePublicAccessBlockConfiguration:
+    Fn::Equals:
+      - "true"
+      - Ref: PublicAccessBlockConfiguration
+
+Resources:
+  CdkBootstrapVersion:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "/cdk-bootstrap/hnb659fds/version"
+      Type: "String"
+      Value: "1"
+      Description: "The version of the bootstrap resources"
+  # Define the StagingBucket as an S3 Bucket
+  StagingBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "${AWS::AccountId}-staging-bucket"
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      VersioningConfiguration:
+        Status: Enabled
+Outputs:
+  BootstrapVersion:
+    Description: The version of the bootstrap resources that are currently mastered in this stack
+    Value: !GetAtt CdkBootstrapVersion.Value
+  BucketName:
+    Description: The name of the S3 bucket owned by the CDK toolkit stack
+    Value:
+      Fn::Sub: ${StagingBucket}
+  BucketDomainName:
+    Description: The domain name of the S3 bucket owned by the CDK toolkit stack
+    Value:
+      Fn::Sub: ${StagingBucket.RegionalDomainName}
+

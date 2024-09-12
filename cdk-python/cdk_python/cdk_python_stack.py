@@ -1,9 +1,9 @@
 from aws_cdk import (
     Stack,
-    CfnParameter,
-    CfnOutput,
     aws_ec2 as ec2,
-    aws_iam as iam
+    aws_iam as iam,
+    CfnParameter,
+    CfnOutput
 )
 from constructs import Construct
 
@@ -11,16 +11,19 @@ class PilaEc2(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        # Parámetros
+        # Parámetros de EC2
         ec2Nombre = CfnParameter(self, "ec2-nombre", type="String", default="MV Default",
-                                     description="Nombre de la instancia")
+                                  description="Nombre de la instancia")
         ami = CfnParameter(self, "ami", type="String", default="ami-0aa28dab1f2852040",
-                              description="Ubuntu Server 22.04 LTS")
+                           description="Ubuntu Server 22.04 LTS")
 
-        rol = iam.Role.from_role_arn(self, "rol", role_arn="arn:aws:iam::670006807599:role/LabRole")
+        # Usar el IAM Role existente 'LabRole'
+        rol = iam.Role.from_role_arn(self, "rol", role_arn=f"arn:aws:iam::{self.account}:role/LabRole")
 
+        # VPC predeterminado
         nube = ec2.Vpc.from_lookup(self, "vpc", is_default=True)
 
+        # Grupo de Seguridad
         grupoSeguridad = ec2.SecurityGroup(
             self, "grupo-seguridad-ec2",
             vpc=nube,
@@ -40,7 +43,7 @@ class PilaEc2(Stack):
             "Permitir HTTP"
         )
 
-        # Instancia EC2 con 'LabRole'
+        # Instancia EC2
         ec2Instancia = ec2.Instance(
             self, "ec2-instancia",
             instance_type=ec2.InstanceType("t2.micro"),
@@ -48,7 +51,7 @@ class PilaEc2(Stack):
             vpc=nube,
             security_group=grupoSeguridad,
             key_pair=ec2.KeyPair.from_key_pair_name(self, "keyPair", "vockey"),
-            role=rol,  # Usar 'LabRole'
+            role=rol,
             block_devices=[ec2.BlockDevice(
                 device_name="/dev/sda1",
                 volume=ec2.BlockDeviceVolume.ebs(20)
@@ -62,7 +65,7 @@ class PilaEc2(Stack):
             ''')
         )
 
-        # Cambiando el nombre a la MV
+        # Cambiar el nombre a la instancia EC2
         ec2Instancia.instance.tags.set_tag('Name', f'{ec2Nombre.value_as_string}')
 
         # Salidas
