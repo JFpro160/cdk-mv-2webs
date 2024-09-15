@@ -3,7 +3,8 @@ from aws_cdk import (
     aws_ec2 as ec2,
     aws_iam as iam,
     CfnParameter,
-    CfnOutput
+    CfnOutput,
+    Tags
 )
 from constructs import Construct
 
@@ -43,6 +44,16 @@ class PilaEc2(Stack):
             "Permitir HTTP"
         )
 
+        # User Data para la instancia
+        datosUsuario = ec2.UserData.for_linux()
+        datosUsuario.add_commands(
+            "#!/bin/bash",  # Línea Shebang
+            "cd /var/www/html/",
+            "git clone https://github.com/utec-cc-2024-2-test/websimple.git",
+            "git clone https://github.com/utec-cc-2024-2-test/webplantilla.git",
+            "ls -l"
+        )
+
         # Instancia EC2
         ec2Instancia = ec2.Instance(
             self, "ec2-instancia",
@@ -56,17 +67,11 @@ class PilaEc2(Stack):
                 device_name="/dev/sda1",
                 volume=ec2.BlockDeviceVolume.ebs(20)
             )],
-            user_data=ec2.UserData.custom('''
-                #!/bin/bash
-                cd /var/www/html/
-                git clone https://github.com/utec-cc-2024-2-test/websimple.git
-                git clone https://github.com/utec-cc-2024-2-test/webplantilla.git
-                ls -l
-            ''')
+            user_data=datosUsuario
         )
 
         # Cambiar el nombre a la instancia EC2
-        ec2Instancia.instance.tags.set_tag('Name', f'{ec2Nombre.value_as_string}')
+        Tags.of(ec2Instancia).add('Name', ec2Nombre.value_as_string)
 
         # Salidas
         CfnOutput(self, "ID", value=ec2Instancia.instance_id)
