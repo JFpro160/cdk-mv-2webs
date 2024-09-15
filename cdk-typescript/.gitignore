@@ -10,3 +10,7 @@ yarn-error.log*
 
 .vscode/*
 .idea/
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
