@@ -47,7 +47,7 @@ class PilaEc2(Stack):
         # User Data para la instancia
         datosUsuario = ec2.UserData.for_linux()
         datosUsuario.add_commands(
-            "#!/bin/bash",  # Línea Shebang
+            "#!/bin/bash",
             "cd /var/www/html/",
             "git clone https://github.com/utec-cc-2024-2-test/websimple.git",
             "git clone https://github.com/utec-cc-2024-2-test/webplantilla.git",
@@ -56,7 +56,7 @@ class PilaEc2(Stack):
 
         # Instancia EC2
         ec2Instancia = ec2.Instance(
-            self, f"ec2-instancia-{ec2Nombre.value_as_string}",
+            self, f"ec2-instancia-{construct_id}",
             instance_type=ec2.InstanceType("t2.micro"),
             machine_image=ec2.MachineImage.generic_linux({ "us-east-1": ami.value_as_string }),
             vpc=nube,
@@ -70,7 +70,7 @@ class PilaEc2(Stack):
             user_data=datosUsuario
         )
 
-        # Cambiar el nombre a la instancia EC2
+        # Cambiar el nombre a la instancia EC2 usando tags
         Tags.of(ec2Instancia).add('Name', ec2Nombre.value_as_string)
 
         # Salidas

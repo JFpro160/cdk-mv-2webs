@@ -18,7 +18,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::670006807599:role/cdk-ec2-dep-deploy-role-670006807599-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:aws:iam::670006807599:role/LabRole",
-        "stackTemplateAssetObjectUrl": "s3://cdk-ec2-dep-assets-670006807599-us-east-1/afa050abce2aa311d4263412833367cf015238da8134eac7b2a3f250394fcc23.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-ec2-dep-assets-670006807599-us-east-1/ffdbcb95e4a7c3cf6cd62ea1aef4326368f73f6d5c4cfcd7774f561d7113c5a2.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/ec2-dep/version",
         "additionalDependencies": [
@@ -52,16 +52,16 @@
             "data": "gruposeguridadec2DC09698F"
           }
         ],
-        "/PilaEc2/ec2-instancia/InstanceProfile": [
+        "/PilaEc2/ec2-instancia-PilaEc2/InstanceProfile": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ec2instanciaInstanceProfile84624A9A"
+            "data": "ec2instanciaPilaEc2InstanceProfile743C3DBE"
           }
         ],
-        "/PilaEc2/ec2-instancia/Resource": [
+        "/PilaEc2/ec2-instancia-PilaEc2/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ec2instancia02395485"
+            "data": "ec2instanciaPilaEc297BBEB57"
           }
         ],
         "/PilaEc2/ID": [

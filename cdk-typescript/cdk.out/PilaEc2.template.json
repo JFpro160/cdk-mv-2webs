@@ -2,7 +2,7 @@
  "Parameters": {
   "ec2nombre": {
    "Type": "String",
-   "Default": "MV Desarrollo",
+   "Default": "MV Default",
    "Description": "Nombre de la instancia"
   },
   "ami": {
@@ -50,7 +50,7 @@
     "aws:cdk:path": "PilaEc2/grupo-seguridad-ec2/Resource"
    }
   },
-  "ec2instanciaInstanceProfile84624A9A": {
+  "ec2instanciaPilaEc2InstanceProfile743C3DBE": {
    "Type": "AWS::IAM::InstanceProfile",
    "Properties": {
     "Roles": [
@@ -58,10 +58,10 @@
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "PilaEc2/ec2-instancia/InstanceProfile"
+    "aws:cdk:path": "PilaEc2/ec2-instancia-PilaEc2/InstanceProfile"
    }
   },
-  "ec2instancia02395485": {
+  "ec2instanciaPilaEc297BBEB57": {
    "Type": "AWS::EC2::Instance",
    "Properties": {
     "AvailabilityZone": "us-east-1a",
@@ -74,7 +74,7 @@
      }
     ],
     "IamInstanceProfile": {
-     "Ref": "ec2instanciaInstanceProfile84624A9A"
+     "Ref": "ec2instanciaPilaEc2InstanceProfile743C3DBE"
     },
     "ImageId": {
      "Ref": "ami"
@@ -103,13 +103,13 @@
     }
    },
    "Metadata": {
-    "aws:cdk:path": "PilaEc2/ec2-instancia/Resource"
+    "aws:cdk:path": "PilaEc2/ec2-instancia-PilaEc2/Resource"
    }
   },
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WNzQqDMBCEn8V73KptwbM9lJ4q+gBlG1eIP4lkN5UivnuRIrSnGeabYTJIzzkkEc4c66aPB/OEpRbUvbq0tkSPIwl5VRG74DUpnPmxkM5gqUkHb+R99S5MW/s/uFkWtJo2svtV8RGKoHuSApmUwRF+cOldawZat8k9yBRkc/v1qqxrCDo+vNIcsgROUcfGxD5YMSNB9dUP7JyH59IAAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WNzQqDMBCEn8V73Kq04L2H0lNFH6CkcYX1J5HNRiniu5dQhPY0HzMfTAH5pYQs0atPTTukI71ga0SbQV07W2nWEwqyqtG7wAaVXv1zQ1PA1qAJTPK+sQtztP+Lu/WircG4HLwr0hP8FBW7jkbco/QIMgeJdJztyroWofenJS+hyOCc9J4o5WCFJoT6mx+KPa+WxAAAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "PilaEc2/CDKMetadata/Default"
@@ -119,13 +119,13 @@
  "Outputs": {
   "ID": {
    "Value": {
-    "Ref": "ec2instancia02395485"
+    "Ref": "ec2instanciaPilaEc297BBEB57"
    }
   },
   "IPPublica": {
    "Value": {
     "Fn::GetAtt": [
-     "ec2instancia02395485",
+     "ec2instanciaPilaEc297BBEB57",
      "PublicIp"
     ]
    }
@@ -138,7 +138,7 @@
       "http://",
       {
        "Fn::GetAtt": [
-        "ec2instancia02395485",
+        "ec2instanciaPilaEc297BBEB57",
         "PublicIp"
        ]
       },
@@ -155,7 +155,7 @@
       "http://",
       {
        "Fn::GetAtt": [
-        "ec2instancia02395485",
+        "ec2instanciaPilaEc297BBEB57",
         "PublicIp"
        ]
       },

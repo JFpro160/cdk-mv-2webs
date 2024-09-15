@@ -138,14 +138,6 @@
               "version": "2.158.0"
             }
           },
-          "CustomStagingBucket": {
-            "id": "CustomStagingBucket",
-            "path": "PilaEc2/CustomStagingBucket",
-            "constructInfo": {
-              "fqn": "aws-cdk-lib.aws_s3.BucketBase",
-              "version": "2.158.0"
-            }
-          },
           "KeyPair": {
             "id": "KeyPair",
             "path": "PilaEc2/KeyPair",
@@ -154,13 +146,13 @@
               "version": "2.158.0"
             }
           },
-          "ec2-instancia": {
-            "id": "ec2-instancia",
-            "path": "PilaEc2/ec2-instancia",
+          "ec2-instancia-PilaEc2": {
+            "id": "ec2-instancia-PilaEc2",
+            "path": "PilaEc2/ec2-instancia-PilaEc2",
             "children": {
               "InstanceProfile": {
                 "id": "InstanceProfile",
-                "path": "PilaEc2/ec2-instancia/InstanceProfile",
+                "path": "PilaEc2/ec2-instancia-PilaEc2/InstanceProfile",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::IAM::InstanceProfile",
                   "aws:cdk:cloudformation:props": {
@@ -176,7 +168,7 @@
               },
               "Resource": {
                 "id": "Resource",
-                "path": "PilaEc2/ec2-instancia/Resource",
+                "path": "PilaEc2/ec2-instancia-PilaEc2/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::EC2::Instance",
                   "aws:cdk:cloudformation:props": {
@@ -190,7 +182,7 @@
                       }
                     ],
                     "iamInstanceProfile": {
-                      "Ref": "ec2instanciaInstanceProfile84624A9A"
+                      "Ref": "ec2instanciaPilaEc2InstanceProfile743C3DBE"
                     },
                     "imageId": {
                       "Ref": "ami"

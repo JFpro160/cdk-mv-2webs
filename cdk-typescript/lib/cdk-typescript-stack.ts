@@ -36,6 +36,9 @@ export class CdkTypescriptStack extends cdk.Stack {
     securityGroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(22), 'Permitir SSH');
     securityGroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(80), 'Permitir HTTP');
 
+    // Crear el key pair
+    const keyPair = ec2.KeyPair.fromKeyPairName(this, 'KeyPair', 'vockey');
+
     // User Data para la instancia
     const userData = ec2.UserData.forLinux();
     userData.addCommands(
@@ -47,7 +50,7 @@ export class CdkTypescriptStack extends cdk.Stack {
     );
 
     // Instancia EC2
-    const instance = new ec2.Instance(this, `ec2-instancia-${ec2Nombre.valueAsString}`, {
+    const instance = new ec2.Instance(this, `ec2-instancia-${id}`, {
       instanceType: new ec2.InstanceType('t2.micro'),
       machineImage: ec2.MachineImage.genericLinux({ 'us-east-1': ami.valueAsString }),
       vpc,
