@@ -18,7 +18,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::670006807599:role/cdk-ec2-dep-deploy-role-670006807599-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:aws:iam::670006807599:role/LabRole",
-        "stackTemplateAssetObjectUrl": "s3://cdk-ec2-dep-assets-670006807599-us-east-1/28196e02ec59aed724a61f74c4c845e1a84432dfecd74a0c31fccdf48b09174f.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-ec2-dep-assets-670006807599-us-east-1/afa050abce2aa311d4263412833367cf015238da8134eac7b2a3f250394fcc23.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/ec2-dep/version",
         "additionalDependencies": [

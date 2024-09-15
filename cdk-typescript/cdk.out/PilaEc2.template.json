@@ -2,7 +2,7 @@
  "Parameters": {
   "ec2nombre": {
    "Type": "String",
-   "Default": "MV Default",
+   "Default": "MV Desarrollo",
    "Description": "Nombre de la instancia"
   },
   "ami": {
@@ -99,7 +99,7 @@
      }
     ],
     "UserData": {
-     "Fn::Base64": "\n        #!/bin/bash\n        cd /var/www/html/\n        git clone https://github.com/utec-cc-2024-2-test/websimple.git\n        git clone https://github.com/utec-cc-2024-2-test/webplantilla.git\n        ls -l\n      "
+     "Fn::Base64": "#!/bin/bash\n#!/bin/bash\ncd /var/www/html/\ngit clone https://github.com/utec-cc-2024-2-test/websimple.git\ngit clone https://github.com/utec-cc-2024-2-test/webplantilla.git\nls -l"
     }
    },
    "Metadata": {

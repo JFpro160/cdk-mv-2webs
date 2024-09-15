@@ -56,7 +56,7 @@ class PilaEc2(Stack):
 
         # Instancia EC2
         ec2Instancia = ec2.Instance(
-            self, "ec2-instancia",
+            self, f"ec2-instancia-{ec2Nombre.value_as_string}",
             instance_type=ec2.InstanceType("t2.micro"),
             machine_image=ec2.MachineImage.generic_linux({ "us-east-1": ami.value_as_string }),
             vpc=nube,

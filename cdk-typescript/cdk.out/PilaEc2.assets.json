@@ -1,7 +1,7 @@
 {
   "version": "36.0.25",
   "files": {
-    "28196e02ec59aed724a61f74c4c845e1a84432dfecd74a0c31fccdf48b09174f": {
+    "afa050abce2aa311d4263412833367cf015238da8134eac7b2a3f250394fcc23": {
       "source": {
         "path": "PilaEc2.template.json",
         "packaging": "file"
@@ -9,7 +9,7 @@
       "destinations": {
         "670006807599-us-east-1": {
           "bucketName": "cdk-ec2-dep-assets-670006807599-us-east-1",
-          "objectKey": "28196e02ec59aed724a61f74c4c845e1a84432dfecd74a0c31fccdf48b09174f.json",
+          "objectKey": "afa050abce2aa311d4263412833367cf015238da8134eac7b2a3f250394fcc23.json",
           "region": "us-east-1",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::670006807599:role/cdk-ec2-dep-file-publishing-role-670006807599-us-east-1"
         }
