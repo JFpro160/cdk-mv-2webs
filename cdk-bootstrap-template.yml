@@ -2,14 +2,14 @@ Description: Esta pila incluye los recursos necesarios para desplegar aplicacion
 
 Parameters:
   Qualifier:
-    Description: Un identificador para distinguir múltiples pilas de bootstrap en el mismo entorno.
+    Description: Un identificador para distinguir multiples pilas de bootstrap en el mismo entorno.
     Default: ec2-dep
     Type: String
     AllowedPattern: "[A-Za-z0-9_-]{1,10}"
-    ConstraintDescription: El identificador debe ser alfanumérico y de hasta 10 caracteres.
+    ConstraintDescription: El identificador debe ser alfanumerico y de hasta 10 caracteres.
 
   PublicAccessBlockConfiguration:
-    Description: Controla si se habilita la configuración de bloqueo de acceso público para el bucket S3 de staging.
+    Description: Controla si se habilita la configuracion de bloqueo de acceso publico para el bucket S3 de staging.
     Default: "true"
     Type: String
     AllowedValues:
@@ -17,7 +17,7 @@ Parameters:
       - "false"
 
   FileAssetsBucketKmsKeyId:
-    Description: Dejar vacío para crear una nueva clave (por defecto), 'AWS_MANAGED_KEY' para usar una clave gestionada por AWS, o el ID/ARN de una clave existente.
+    Description: Dejar vacio para crear una nueva clave (por defecto), 'AWS_MANAGED_KEY' para usar una clave gestionada por AWS, o el ID/ARN de una clave existente.
     Default: ""
     Type: String
 
@@ -44,7 +44,7 @@ Resources:
       Name: !Sub "/cdk-bootstrap/${Qualifier}/version"
       Type: "String"
       Value: "21"
-      Description: "La versión de los recursos de bootstrap."
+      Description: "La version de los recursos de bootstrap."
 
   StagingBucket:
     Type: AWS::S3::Bucket
@@ -60,7 +60,7 @@ Resources:
 
 Outputs:
   BootstrapVersion:
-    Description: La versión de los recursos de bootstrap que se están usando en esta pila.
+    Description: La version de los recursos de bootstrap que se estan usando en esta pila.
     Value: !GetAtt CdkBootstrapVersion.Value
 
   BucketName:
