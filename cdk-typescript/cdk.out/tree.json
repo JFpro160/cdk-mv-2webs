@@ -4,13 +4,13 @@
     "id": "App",
     "path": "",
     "children": {
-      "ec2-instancia-20240915T062033220Z": {
-        "id": "ec2-instancia-20240915T062033220Z",
-        "path": "ec2-instancia-20240915T062033220Z",
+      "ec2-instancia-20240915T062505480Z": {
+        "id": "ec2-instancia-20240915T062505480Z",
+        "path": "ec2-instancia-20240915T062505480Z",
         "children": {
           "ec2-nombre": {
             "id": "ec2-nombre",
-            "path": "ec2-instancia-20240915T062033220Z/ec2-nombre",
+            "path": "ec2-instancia-20240915T062505480Z/ec2-nombre",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnParameter",
               "version": "2.158.0"
@@ -18,7 +18,7 @@
           },
           "ami": {
             "id": "ami",
-            "path": "ec2-instancia-20240915T062033220Z/ami",
+            "path": "ec2-instancia-20240915T062505480Z/ami",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnParameter",
               "version": "2.158.0"
@@ -26,7 +26,7 @@
           },
           "rol": {
             "id": "rol",
-            "path": "ec2-instancia-20240915T062033220Z/rol",
+            "path": "ec2-instancia-20240915T062505480Z/rol",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.158.0"
@@ -34,11 +34,11 @@
           },
           "vpc": {
             "id": "vpc",
-            "path": "ec2-instancia-20240915T062033220Z/vpc",
+            "path": "ec2-instancia-20240915T062505480Z/vpc",
             "children": {
               "PublicSubnet1": {
                 "id": "PublicSubnet1",
-                "path": "ec2-instancia-20240915T062033220Z/vpc/PublicSubnet1",
+                "path": "ec2-instancia-20240915T062505480Z/vpc/PublicSubnet1",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.Resource",
                   "version": "2.158.0"
@@ -46,7 +46,7 @@
               },
               "PublicSubnet2": {
                 "id": "PublicSubnet2",
-                "path": "ec2-instancia-20240915T062033220Z/vpc/PublicSubnet2",
+                "path": "ec2-instancia-20240915T062505480Z/vpc/PublicSubnet2",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.Resource",
                   "version": "2.158.0"
@@ -54,7 +54,7 @@
               },
               "PublicSubnet3": {
                 "id": "PublicSubnet3",
-                "path": "ec2-instancia-20240915T062033220Z/vpc/PublicSubnet3",
+                "path": "ec2-instancia-20240915T062505480Z/vpc/PublicSubnet3",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.Resource",
                   "version": "2.158.0"
@@ -62,7 +62,7 @@
               },
               "PublicSubnet4": {
                 "id": "PublicSubnet4",
-                "path": "ec2-instancia-20240915T062033220Z/vpc/PublicSubnet4",
+                "path": "ec2-instancia-20240915T062505480Z/vpc/PublicSubnet4",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.Resource",
                   "version": "2.158.0"
@@ -70,7 +70,7 @@
               },
               "PublicSubnet5": {
                 "id": "PublicSubnet5",
-                "path": "ec2-instancia-20240915T062033220Z/vpc/PublicSubnet5",
+                "path": "ec2-instancia-20240915T062505480Z/vpc/PublicSubnet5",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.Resource",
                   "version": "2.158.0"
@@ -78,7 +78,7 @@
               },
               "PublicSubnet6": {
                 "id": "PublicSubnet6",
-                "path": "ec2-instancia-20240915T062033220Z/vpc/PublicSubnet6",
+                "path": "ec2-instancia-20240915T062505480Z/vpc/PublicSubnet6",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.Resource",
                   "version": "2.158.0"
@@ -92,11 +92,11 @@
           },
           "grupo-seguridad-ec2": {
             "id": "grupo-seguridad-ec2",
-            "path": "ec2-instancia-20240915T062033220Z/grupo-seguridad-ec2",
+            "path": "ec2-instancia-20240915T062505480Z/grupo-seguridad-ec2",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "ec2-instancia-20240915T062033220Z/grupo-seguridad-ec2/Resource",
+                "path": "ec2-instancia-20240915T062505480Z/grupo-seguridad-ec2/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
                   "aws:cdk:cloudformation:props": {
@@ -140,19 +140,19 @@
           },
           "KeyPair": {
             "id": "KeyPair",
-            "path": "ec2-instancia-20240915T062033220Z/KeyPair",
+            "path": "ec2-instancia-20240915T062505480Z/KeyPair",
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
               "version": "2.158.0"
             }
           },
-          "ec2-instancia-20240915T062033220Z": {
-            "id": "ec2-instancia-20240915T062033220Z",
-            "path": "ec2-instancia-20240915T062033220Z/ec2-instancia-20240915T062033220Z",
+          "ec2-instancia-20240915T062505480Z": {
+            "id": "ec2-instancia-20240915T062505480Z",
+            "path": "ec2-instancia-20240915T062505480Z/ec2-instancia-20240915T062505480Z",
             "children": {
               "InstanceProfile": {
                 "id": "InstanceProfile",
-                "path": "ec2-instancia-20240915T062033220Z/ec2-instancia-20240915T062033220Z/InstanceProfile",
+                "path": "ec2-instancia-20240915T062505480Z/ec2-instancia-20240915T062505480Z/InstanceProfile",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::IAM::InstanceProfile",
                   "aws:cdk:cloudformation:props": {
@@ -168,7 +168,7 @@
               },
               "Resource": {
                 "id": "Resource",
-                "path": "ec2-instancia-20240915T062033220Z/ec2-instancia-20240915T062033220Z/Resource",
+                "path": "ec2-instancia-20240915T062505480Z/ec2-instancia-20240915T062505480Z/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::EC2::Instance",
                   "aws:cdk:cloudformation:props": {
@@ -182,7 +182,7 @@
                       }
                     ],
                     "iamInstanceProfile": {
-                      "Ref": "ec2instancia20240915T062033220ZInstanceProfileA2717EA6"
+                      "Ref": "ec2instancia20240915T062505480ZInstanceProfileABAAF628"
                     },
                     "imageId": {
                       "Ref": "ami"
@@ -224,7 +224,7 @@
           },
           "ID": {
             "id": "ID",
-            "path": "ec2-instancia-20240915T062033220Z/ID",
+            "path": "ec2-instancia-20240915T062505480Z/ID",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
               "version": "2.158.0"
@@ -232,7 +232,7 @@
           },
           "IPPublica": {
             "id": "IPPublica",
-            "path": "ec2-instancia-20240915T062033220Z/IPPublica",
+            "path": "ec2-instancia-20240915T062505480Z/IPPublica",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
               "version": "2.158.0"
@@ -240,7 +240,7 @@
           },
           "websimpleURL": {
             "id": "websimpleURL",
-            "path": "ec2-instancia-20240915T062033220Z/websimpleURL",
+            "path": "ec2-instancia-20240915T062505480Z/websimpleURL",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
               "version": "2.158.0"
@@ -248,7 +248,7 @@
           },
           "webplantillaURL": {
             "id": "webplantillaURL",
-            "path": "ec2-instancia-20240915T062033220Z/webplantillaURL",
+            "path": "ec2-instancia-20240915T062505480Z/webplantillaURL",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
               "version": "2.158.0"
@@ -256,11 +256,11 @@
           },
           "CDKMetadata": {
             "id": "CDKMetadata",
-            "path": "ec2-instancia-20240915T062033220Z/CDKMetadata",
+            "path": "ec2-instancia-20240915T062505480Z/CDKMetadata",
             "children": {
               "Default": {
                 "id": "Default",
-                "path": "ec2-instancia-20240915T062033220Z/CDKMetadata/Default",
+                "path": "ec2-instancia-20240915T062505480Z/CDKMetadata/Default",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.CfnResource",
                   "version": "2.158.0"
@@ -274,7 +274,7 @@
           },
           "BootstrapVersion": {
             "id": "BootstrapVersion",
-            "path": "ec2-instancia-20240915T062033220Z/BootstrapVersion",
+            "path": "ec2-instancia-20240915T062505480Z/BootstrapVersion",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnParameter",
               "version": "2.158.0"
@@ -282,7 +282,7 @@
           },
           "CheckBootstrapVersion": {
             "id": "CheckBootstrapVersion",
-            "path": "ec2-instancia-20240915T062033220Z/CheckBootstrapVersion",
+            "path": "ec2-instancia-20240915T062505480Z/CheckBootstrapVersion",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnRule",
               "version": "2.158.0"

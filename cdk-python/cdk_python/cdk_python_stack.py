@@ -33,7 +33,7 @@ class PilaEc2(Stack):
         grupoSeguridad = ec2.SecurityGroup(
             self, "grupo-seguridad-ec2",
             vpc=nube,
-            description="Permitir tráfico SSH y HTTP desde 0.0.0.0/0",
+            description="Permitir trafico SSH y HTTP desde 0.0.0.0/0",
             allow_all_outbound=True
         )
 

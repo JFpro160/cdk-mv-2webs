@@ -1,28 +1,28 @@
 {
   "version": "36.0.25",
   "artifacts": {
-    "ec2-instancia-20240915T062033220Z.assets": {
+    "ec2-instancia-20240915T062505480Z.assets": {
       "type": "cdk:asset-manifest",
       "properties": {
-        "file": "ec2-instancia-20240915T062033220Z.assets.json",
+        "file": "ec2-instancia-20240915T062505480Z.assets.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/ec2-dep/version"
       }
     },
-    "ec2-instancia-20240915T062033220Z": {
+    "ec2-instancia-20240915T062505480Z": {
       "type": "aws:cloudformation:stack",
       "environment": "aws://670006807599/us-east-1",
       "properties": {
-        "templateFile": "ec2-instancia-20240915T062033220Z.template.json",
+        "templateFile": "ec2-instancia-20240915T062505480Z.template.json",
         "terminationProtection": false,
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::670006807599:role/cdk-ec2-dep-deploy-role-670006807599-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:aws:iam::670006807599:role/LabRole",
-        "stackTemplateAssetObjectUrl": "s3://cdk-ec2-dep-assets-670006807599-us-east-1/dea5b9531595451e12a9356b4f8ff5602995b90c27021016fea41308ddcc1913.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-ec2-dep-assets-670006807599-us-east-1/fa26076488e6ef8c43af74b665c0f18658d2594538f3dd7a26c3f4af79dc7be2.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/ec2-dep/version",
         "additionalDependencies": [
-          "ec2-instancia-20240915T062033220Z.assets"
+          "ec2-instancia-20240915T062505480Z.assets"
         ],
         "lookupRole": {
           "arn": "arn:${AWS::Partition}:iam::670006807599:role/cdk-ec2-dep-lookup-role-670006807599-us-east-1",
@@ -31,83 +31,83 @@
         }
       },
       "dependencies": [
-        "ec2-instancia-20240915T062033220Z.assets"
+        "ec2-instancia-20240915T062505480Z.assets"
       ],
       "metadata": {
-        "/ec2-instancia-20240915T062033220Z/ec2-nombre": [
+        "/ec2-instancia-20240915T062505480Z/ec2-nombre": [
           {
             "type": "aws:cdk:logicalId",
             "data": "ec2nombre"
           }
         ],
-        "/ec2-instancia-20240915T062033220Z/ami": [
+        "/ec2-instancia-20240915T062505480Z/ami": [
           {
             "type": "aws:cdk:logicalId",
             "data": "ami"
           }
         ],
-        "/ec2-instancia-20240915T062033220Z/grupo-seguridad-ec2/Resource": [
+        "/ec2-instancia-20240915T062505480Z/grupo-seguridad-ec2/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "gruposeguridadec2DC09698F"
           }
         ],
-        "/ec2-instancia-20240915T062033220Z/ec2-instancia-20240915T062033220Z/InstanceProfile": [
+        "/ec2-instancia-20240915T062505480Z/ec2-instancia-20240915T062505480Z/InstanceProfile": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ec2instancia20240915T062033220ZInstanceProfileA2717EA6"
+            "data": "ec2instancia20240915T062505480ZInstanceProfileABAAF628"
           }
         ],
-        "/ec2-instancia-20240915T062033220Z/ec2-instancia-20240915T062033220Z/Resource": [
+        "/ec2-instancia-20240915T062505480Z/ec2-instancia-20240915T062505480Z/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ec2instancia20240915T062033220Z39A763E6"
+            "data": "ec2instancia20240915T062505480ZCDBEA64F"
           }
         ],
-        "/ec2-instancia-20240915T062033220Z/ID": [
+        "/ec2-instancia-20240915T062505480Z/ID": [
           {
             "type": "aws:cdk:logicalId",
             "data": "ID"
           }
         ],
-        "/ec2-instancia-20240915T062033220Z/IPPublica": [
+        "/ec2-instancia-20240915T062505480Z/IPPublica": [
           {
             "type": "aws:cdk:logicalId",
             "data": "IPPublica"
           }
         ],
-        "/ec2-instancia-20240915T062033220Z/websimpleURL": [
+        "/ec2-instancia-20240915T062505480Z/websimpleURL": [
           {
             "type": "aws:cdk:logicalId",
             "data": "websimpleURL"
           }
         ],
-        "/ec2-instancia-20240915T062033220Z/webplantillaURL": [
+        "/ec2-instancia-20240915T062505480Z/webplantillaURL": [
           {
             "type": "aws:cdk:logicalId",
             "data": "webplantillaURL"
           }
         ],
-        "/ec2-instancia-20240915T062033220Z/CDKMetadata/Default": [
+        "/ec2-instancia-20240915T062505480Z/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CDKMetadata"
           }
         ],
-        "/ec2-instancia-20240915T062033220Z/BootstrapVersion": [
+        "/ec2-instancia-20240915T062505480Z/BootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "BootstrapVersion"
           }
         ],
-        "/ec2-instancia-20240915T062033220Z/CheckBootstrapVersion": [
+        "/ec2-instancia-20240915T062505480Z/CheckBootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CheckBootstrapVersion"
           }
         ]
       },
-      "displayName": "ec2-instancia-20240915T062033220Z"
+      "displayName": "ec2-instancia-20240915T062505480Z"
     },
     "Tree": {
       "type": "cdk:tree",
