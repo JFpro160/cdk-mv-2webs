@@ -1,28 +1,28 @@
 {
   "version": "36.0.25",
   "artifacts": {
-    "PilaEc2.assets": {
+    "ec2-instancia-20240915T062033220Z.assets": {
       "type": "cdk:asset-manifest",
       "properties": {
-        "file": "PilaEc2.assets.json",
+        "file": "ec2-instancia-20240915T062033220Z.assets.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/ec2-dep/version"
       }
     },
-    "PilaEc2": {
+    "ec2-instancia-20240915T062033220Z": {
       "type": "aws:cloudformation:stack",
       "environment": "aws://670006807599/us-east-1",
       "properties": {
-        "templateFile": "PilaEc2.template.json",
+        "templateFile": "ec2-instancia-20240915T062033220Z.template.json",
         "terminationProtection": false,
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::670006807599:role/cdk-ec2-dep-deploy-role-670006807599-us-east-1",
         "cloudFormationExecutionRoleArn": "arn:aws:iam::670006807599:role/LabRole",
-        "stackTemplateAssetObjectUrl": "s3://cdk-ec2-dep-assets-670006807599-us-east-1/ffdbcb95e4a7c3cf6cd62ea1aef4326368f73f6d5c4cfcd7774f561d7113c5a2.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-ec2-dep-assets-670006807599-us-east-1/dea5b9531595451e12a9356b4f8ff5602995b90c27021016fea41308ddcc1913.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/ec2-dep/version",
         "additionalDependencies": [
-          "PilaEc2.assets"
+          "ec2-instancia-20240915T062033220Z.assets"
         ],
         "lookupRole": {
           "arn": "arn:${AWS::Partition}:iam::670006807599:role/cdk-ec2-dep-lookup-role-670006807599-us-east-1",
@@ -31,83 +31,83 @@
         }
       },
       "dependencies": [
-        "PilaEc2.assets"
+        "ec2-instancia-20240915T062033220Z.assets"
       ],
       "metadata": {
-        "/PilaEc2/ec2-nombre": [
+        "/ec2-instancia-20240915T062033220Z/ec2-nombre": [
           {
             "type": "aws:cdk:logicalId",
             "data": "ec2nombre"
           }
         ],
-        "/PilaEc2/ami": [
+        "/ec2-instancia-20240915T062033220Z/ami": [
           {
             "type": "aws:cdk:logicalId",
             "data": "ami"
           }
         ],
-        "/PilaEc2/grupo-seguridad-ec2/Resource": [
+        "/ec2-instancia-20240915T062033220Z/grupo-seguridad-ec2/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "gruposeguridadec2DC09698F"
           }
         ],
-        "/PilaEc2/ec2-instancia-PilaEc2/InstanceProfile": [
+        "/ec2-instancia-20240915T062033220Z/ec2-instancia-20240915T062033220Z/InstanceProfile": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ec2instanciaPilaEc2InstanceProfile743C3DBE"
+            "data": "ec2instancia20240915T062033220ZInstanceProfileA2717EA6"
           }
         ],
-        "/PilaEc2/ec2-instancia-PilaEc2/Resource": [
+        "/ec2-instancia-20240915T062033220Z/ec2-instancia-20240915T062033220Z/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ec2instanciaPilaEc297BBEB57"
+            "data": "ec2instancia20240915T062033220Z39A763E6"
           }
         ],
-        "/PilaEc2/ID": [
+        "/ec2-instancia-20240915T062033220Z/ID": [
           {
             "type": "aws:cdk:logicalId",
             "data": "ID"
           }
         ],
-        "/PilaEc2/IPPublica": [
+        "/ec2-instancia-20240915T062033220Z/IPPublica": [
           {
             "type": "aws:cdk:logicalId",
             "data": "IPPublica"
           }
         ],
-        "/PilaEc2/websimpleURL": [
+        "/ec2-instancia-20240915T062033220Z/websimpleURL": [
           {
             "type": "aws:cdk:logicalId",
             "data": "websimpleURL"
           }
         ],
-        "/PilaEc2/webplantillaURL": [
+        "/ec2-instancia-20240915T062033220Z/webplantillaURL": [
           {
             "type": "aws:cdk:logicalId",
             "data": "webplantillaURL"
           }
         ],
-        "/PilaEc2/CDKMetadata/Default": [
+        "/ec2-instancia-20240915T062033220Z/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CDKMetadata"
           }
         ],
-        "/PilaEc2/BootstrapVersion": [
+        "/ec2-instancia-20240915T062033220Z/BootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "BootstrapVersion"
           }
         ],
-        "/PilaEc2/CheckBootstrapVersion": [
+        "/ec2-instancia-20240915T062033220Z/CheckBootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CheckBootstrapVersion"
           }
         ]
       },
-      "displayName": "PilaEc2"
+      "displayName": "ec2-instancia-20240915T062033220Z"
     },
     "Tree": {
       "type": "cdk:tree",

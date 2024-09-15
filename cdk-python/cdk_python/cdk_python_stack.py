@@ -7,28 +7,33 @@ from aws_cdk import (
     Tags
 )
 from constructs import Construct
+from datetime import datetime
 
 class PilaEc2(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
-        super().__init__(scope, construct_id, **kwargs)
+        # Generar un ID único usando la fecha y hora actual
+        id_unico = f"ec2-instancia-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
+        super().__init__(scope, id_unico, **kwargs)
 
-        # Parámetros de EC2
+        # Parámetro para el nombre de la instancia
         ec2Nombre = CfnParameter(self, "ec2-nombre", type="String", default="MV Default",
                                   description="Nombre de la instancia")
+
+        # Parámetro para la AMI de Ubuntu
         ami = CfnParameter(self, "ami", type="String", default="ami-0aa28dab1f2852040",
                            description="Ubuntu Server 22.04 LTS")
 
         # Usar el IAM Role existente 'LabRole'
         rol = iam.Role.from_role_arn(self, "rol", role_arn=f"arn:aws:iam::{self.account}:role/LabRole")
 
-        # VPC predeterminado
+        # Obtener la VPC predeterminada
         nube = ec2.Vpc.from_lookup(self, "vpc", is_default=True)
 
-        # Grupo de Seguridad
+        # Crear el grupo de seguridad
         grupoSeguridad = ec2.SecurityGroup(
             self, "grupo-seguridad-ec2",
             vpc=nube,
-            description="Se permite el trafico SSH y HTTP desde 0.0.0.0/0",
+            description="Permitir tráfico SSH y HTTP desde 0.0.0.0/0",
             allow_all_outbound=True
         )
 
@@ -44,7 +49,7 @@ class PilaEc2(Stack):
             "Permitir HTTP"
         )
 
-        # User Data para la instancia
+        # Comandos de User Data para la instancia
         datosUsuario = ec2.UserData.for_linux()
         datosUsuario.add_commands(
             "#!/bin/bash",
@@ -54,9 +59,9 @@ class PilaEc2(Stack):
             "ls -l"
         )
 
-        # Instancia EC2
+        # Crear la instancia EC2
         ec2Instancia = ec2.Instance(
-            self, f"ec2-instancia-{construct_id}",
+            self, id_unico,  # Usar el ID único generado
             instance_type=ec2.InstanceType("t2.micro"),
             machine_image=ec2.MachineImage.generic_linux({ "us-east-1": ami.value_as_string }),
             vpc=nube,
@@ -70,7 +75,7 @@ class PilaEc2(Stack):
             user_data=datosUsuario
         )
 
-        # Cambiar el nombre a la instancia EC2 usando tags
+        # Añadir etiquetas (Tags) a la instancia
         Tags.of(ec2Instancia).add('Name', ec2Nombre.value_as_string)
 
         # Salidas
