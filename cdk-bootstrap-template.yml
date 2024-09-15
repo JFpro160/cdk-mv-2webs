@@ -3,7 +3,7 @@ Description: Esta pila incluye los recursos necesarios para desplegar aplicacion
 Parameters:
   Qualifier:
     Description: Un identificador para distinguir múltiples pilas de bootstrap en el mismo entorno.
-    Default: cdk-dep
+    Default: ec2-dep
     Type: String
     AllowedPattern: "[A-Za-z0-9_-]{1,10}"
     ConstraintDescription: El identificador debe ser alfanumérico y de hasta 10 caracteres.

@@ -1,21 +1,38 @@
-#!/usr/bin/env node
-import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { CdkTypescriptStack } from '../lib/cdk-typescript-stack';
+import { STSClient, GetCallerIdentityCommand } from '@aws-sdk/client-sts';
 
-const app = new cdk.App();
-new CdkTypescriptStack(app, 'CdkTypescriptStack', {
-  /* If you don't specify 'env', this stack will be environment-agnostic.
-   * Account/Region-dependent features and context lookups will not work,
-   * but a single synthesized template can be deployed anywhere. */
+async function main() {
+  const app = new cdk.App();
 
-  /* Uncomment the next line to specialize this stack for the AWS Account
-   * and Region that are implied by the current CLI configuration. */
-  // env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
+  // Crear un cliente de STS con la región
+  const stsClient = new STSClient({ region: process.env.AWS_REGION || 'us-east-1' });
 
-  /* Uncomment the next line if you know exactly what Account and Region you
-   * want to deploy the stack to. */
-  // env: { account: '123456789012', region: 'us-east-1' },
+  // Obtener el ID de la cuenta usando la sintaxis de AWS SDK v3
+  const data = await stsClient.send(new GetCallerIdentityCommand({}));
+  const accountId = data.Account!;  // ID de la cuenta obtenida
+  const region = process.env.AWS_REGION || 'us-east-1';  // Región predeterminada si no está definida en el entorno
 
-  /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
-});
+  // Definir un nuevo qualifier
+  const qualifier = 'ec2-dep';  // Usar el nuevo qualifier dinámico
+
+  // Definir el entorno con el ID de la cuenta y la región obtenidos
+  const env = { account: accountId, region: region };
+
+  // Configurar el sintetizador con el qualifier correcto y el bucket basado en el bootstrap
+  const sintetizador = new cdk.DefaultStackSynthesizer({
+    qualifier: qualifier,  // Usar el qualifier dinámico
+    cloudFormationExecutionRole: `arn:aws:iam::${accountId}:role/LabRole`,  // Usar el rol LabRole
+    fileAssetsBucketName: `cdk-${qualifier}-assets-${accountId}-${region}`,  // Usar el qualifier en el nombre del bucket
+  });
+
+  // Crear el stack y pasar el sintetizador con LabRole
+  new CdkTypescriptStack(app, 'PilaEc2', { env, synthesizer: sintetizador });
+
+  // Sintetizar la aplicación CDK
+  app.synth();
+}
+
+// Ejecutar la función principal
+main();
+

@@ -1,0 +1,119 @@
+{
+  "version": "36.0.25",
+  "artifacts": {
+    "PilaEc2.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "PilaEc2.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/ec2-dep/version"
+      }
+    },
+    "PilaEc2": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://670006807599/us-east-1",
+      "properties": {
+        "templateFile": "PilaEc2.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::670006807599:role/cdk-ec2-dep-deploy-role-670006807599-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:aws:iam::670006807599:role/LabRole",
+        "stackTemplateAssetObjectUrl": "s3://cdk-ec2-dep-assets-670006807599-us-east-1/28196e02ec59aed724a61f74c4c845e1a84432dfecd74a0c31fccdf48b09174f.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/ec2-dep/version",
+        "additionalDependencies": [
+          "PilaEc2.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::670006807599:role/cdk-ec2-dep-lookup-role-670006807599-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/ec2-dep/version"
+        }
+      },
+      "dependencies": [
+        "PilaEc2.assets"
+      ],
+      "metadata": {
+        "/PilaEc2/ec2-nombre": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ec2nombre"
+          }
+        ],
+        "/PilaEc2/ami": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ami"
+          }
+        ],
+        "/PilaEc2/grupo-seguridad-ec2/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "gruposeguridadec2DC09698F"
+          }
+        ],
+        "/PilaEc2/ec2-instancia/InstanceProfile": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ec2instanciaInstanceProfile84624A9A"
+          }
+        ],
+        "/PilaEc2/ec2-instancia/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ec2instancia02395485"
+          }
+        ],
+        "/PilaEc2/ID": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ID"
+          }
+        ],
+        "/PilaEc2/IPPublica": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "IPPublica"
+          }
+        ],
+        "/PilaEc2/websimpleURL": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "websimpleURL"
+          }
+        ],
+        "/PilaEc2/webplantillaURL": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "webplantillaURL"
+          }
+        ],
+        "/PilaEc2/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/PilaEc2/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/PilaEc2/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "PilaEc2"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}
